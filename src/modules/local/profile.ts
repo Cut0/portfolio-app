@@ -22,7 +22,6 @@ export default ({ root }: SetupContext) => {
         state.careers = res.data.careers
         state.skills = res.data.skills
         state.sns = res.data.sns
-        console.log(state)
       })
       .finally(() => {
         state.loading = false

@@ -97,10 +97,10 @@ export default defineComponent({
 
 <style>
 .carousel-3d-slide {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 50% !important;
   border: none;
 }
 .carousel-3d-controls {

@@ -1,6 +1,6 @@
 <template lang="pug">
   span.img-wrapper
-    img(:src="icon")
+    img(:src="icon" alt="アイコンです")
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
