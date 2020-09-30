@@ -1,5 +1,5 @@
 # portfolio-app
-
+ポートフォリオサイトです。前のが酷すぎたので作り直したあ。
 ## Project setup
 ```
 yarn install
