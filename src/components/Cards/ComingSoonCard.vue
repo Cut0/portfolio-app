@@ -1,6 +1,6 @@
 <template lang="pug">
   v-card(color="#2C2738" shaped)
-    .content-wrapper
+    .wrapper
       span.content Coming Soon!!
 </template>
 <style lang="sass" scoped>
@@ -13,7 +13,7 @@
   margin: 16px 64px 16px 24px
   min-width: 136px
   position: relative
-.content-wrapper
+.wrapper
   display: flex
   align-items: center
 </style>

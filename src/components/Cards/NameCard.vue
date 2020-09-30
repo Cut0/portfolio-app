@@ -2,7 +2,7 @@
   v-card(color="#2C2738" shaped)
     v-layout
       .left-container
-        circle-icon
+        circle-icon(:icon="profileIcon")
       v-flex.right-container
         div
           h1.name {{name}}
@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import CircleIcon from '@/components/Icon/CircleIcon.vue'
+import CircleIcon from '@/components/CircleIcon.vue'
+import { SetupContext, reactive, defineComponent } from '@vue/composition-api'
 export default defineComponent({
   components: { CircleIcon },
   props: {
@@ -24,6 +24,17 @@ export default defineComponent({
       type: String,
       default: 'JOB',
       required: true
+    },
+    profileIcon: {
+      required: true
+    }
+  },
+  setup(_, context: SetupContext) {
+    const state = reactive({
+      profileIcon: require('@/assets/icons/profileIcon.webp')
+    })
+    return {
+      state
     }
   }
 })

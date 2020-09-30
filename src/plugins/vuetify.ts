@@ -4,7 +4,8 @@ import {
   mdiAccount,
   mdiApplicationExport,
   mdiNewspaper,
-  mdiStickerOutline
+  mdiStickerOutline,
+  mdiHomeFloor0
 } from '@mdi/js'
 Vue.use(Vuetify)
 
@@ -15,7 +16,8 @@ export default new Vuetify({
       profile: mdiAccount,
       production: mdiApplicationExport,
       article: mdiNewspaper,
-      memo: mdiStickerOutline
+      memo: mdiStickerOutline,
+      zero: mdiHomeFloor0
     }
   },
   theme: { dark: true }

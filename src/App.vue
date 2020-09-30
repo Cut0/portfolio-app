@@ -5,10 +5,9 @@
       color="#49337D" app fixed permanent touchless :expand-on-hover="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm")
       v-list.py-0
         v-list-item()
-          v-list-item-avatar
-            img(src="https://picsum.photos/200/300")
-          v-list-item-content
-            v-list-item-title Cut0
+          v-list-item-icon
+            v-icon  $zero
+            v-list-item-title.title 's Portfolio
         v-divider
         v-list-item-group
           v-list-item()

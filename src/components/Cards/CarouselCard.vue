@@ -2,15 +2,42 @@
   v-card(color="#2C2738" shaped)
     .wrapper
       h2.title {{title}}
-      .main-container
-        p.content  {{content}}
+      carousel3d(
+        :display="display"
+        :image-urls="list"
+        :keyword="keyword"
+        :list="list"
+        @centerClick="centerClick"
+      )
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import Carousel3d from '@/components/Carousel3d.vue'
 export default defineComponent({
+  components: {
+    Carousel3d
+  },
   props: {
-    title: { type: String, default: 'TITLE', required: true },
-    content: { type: String, default: 'CONTENT', required: true }
+    title: {
+      type: String,
+      required: true
+    },
+    display: { type: Number, default: 5 },
+    keyword: {
+      type: String,
+      required: true
+    },
+    list: {
+      type: Array,
+      required: true
+    }
+  },
+  setup(props, { emit }) {
+    return {
+      centerClick(index: number) {
+        emit('itemClick', index)
+      }
+    }
   }
 })
 </script>
@@ -23,7 +50,7 @@ export default defineComponent({
 }
 .title {
   @include title;
-  margin: 16px 64px 16px 24px;
+  margin: 16px 32px 16px 24px;
   min-width: 136px;
   position: relative;
 }
@@ -32,21 +59,10 @@ export default defineComponent({
   align-items: center;
   padding: 12px 0px;
 }
-.content {
-  @include input;
-  margin: 4px 0px 4px 16px;
-  white-space: pre-line;
-}
 @media screen and (max-width: 600px) {
-  .main-container {
-    margin: 16px 0px 0px 16px;
-  }
   .wrapper {
     display: block;
     align-items: center;
-  }
-  .content {
-    font-size: 14px;
   }
 }
 @media screen and (min-width: 600px) {
@@ -58,7 +74,7 @@ export default defineComponent({
     bottom: 0;
     margin: auto 0;
     width: 4px;
-    height: 200%;
+    height: 400%;
     border-radius: 3px;
     box-shadow: 2px 2px 2px #403952 inset, -2px -2px 2px #18151e inset;
   }

@@ -1,7 +1,7 @@
 <template lang="pug">
   v-card(color="#2C2738" shaped)
     .wrapper
-      h2.card-title {{title}}
+      h2.title {{title}}
       .main-container
         ul
           template(v-for="el in careers")
@@ -31,7 +31,7 @@ ul {
   box-shadow: inset 9px 9px 18px #252130, inset -9px -9px 18px #332d40 !important;
   padding: 16px !important;
 }
-.card-title {
+.title {
   @include title;
   margin: 16px 64px 16px 24px;
   min-width: 136px;
@@ -67,7 +67,7 @@ ul {
   }
 }
 @media screen and (min-width: 600px) {
-  .card-title::before {
+  .title::before {
     content: '';
     position: absolute;
     top: 0;
