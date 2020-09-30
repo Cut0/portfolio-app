@@ -3,7 +3,7 @@ export default {
   image: '',
   job: 'frontend engineer',
   introduction:
-    '東京理科大学情報工学科2年生。2019年5月頃からweb開発系のインターンをしている。現在は業務でのRails+Vue.jsでの開発や趣味でTypeScriptを使っていろいろやってる。',
+    '東京理科大学情報工学科2年生。\n2019年5月頃からweb開発系のインターンをしている。\n現在は業務でのRails+Vue.jsでの開発や趣味でTypeScriptを使っていろいろやってる。',
   careers: [
     {
       title: '~2019年',

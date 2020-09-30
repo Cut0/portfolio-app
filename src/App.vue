@@ -2,7 +2,7 @@
   v-app(color="#49337D")
     v-navigation-drawer(
       v-if="!$vuetify.breakpoint.xs"
-      color="#49337D" app fixed permanent touchless)
+      color="#49337D" app fixed permanent touchless :expand-on-hover="$vuetify.breakpoint.xs||$vuetify.breakpoint.sm")
       v-list.py-0
         v-list-item()
           v-list-item-avatar
@@ -57,8 +57,6 @@
 </template>
 
 <style lang="sass">
-.v-main
-  padding-bottom: 56px !important
 .v-application
   background: #2c2738 !important
 </style>

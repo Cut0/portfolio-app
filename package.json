@@ -17,7 +17,8 @@
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
     "vue-router": "^3.2.0",
-    "vuetify": "^2.2.11"
+    "vuetify": "^2.2.11",
+    "vue-carousel-3d": "git+https://github.com/CutRay/vue-carousel-3d.git"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",
