@@ -20,6 +20,7 @@
       title="Skills"
       keyword="image"
       :list="skills"
+      @itemClick="openSkill"
       v-if="!loading"
     )
     carousel-card.card(
@@ -27,10 +28,11 @@
       :display="3"
       keyword="image"
       :list="sns"
+      @itemClick="jumpLink"
       v-if="!loading"
     )
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import NameCard from '@/components/cards/NameCard.vue'
 import IntroductionCard from '@/components/cards/IntroductionCard.vue'
@@ -44,7 +46,13 @@ export default defineComponent({
     const profileComponent = ProfileComponent(ctx)
     profileComponent.get()
     return {
-      ...profileComponent
+      ...profileComponent,
+      openSkill(pos: number) {
+        profileComponent.setSkill(pos)
+      },
+      jumpLink(pos: number) {
+        profileComponent.navigateToSns(pos)
+      }
     }
   }
 })

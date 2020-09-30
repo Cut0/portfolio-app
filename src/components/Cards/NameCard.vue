@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import CircleIcon from '@/components/CircleIcon.vue'
-import { SetupContext, reactive, defineComponent } from '@vue/composition-api'
+import { reactive, defineComponent } from '@vue/composition-api'
 export default defineComponent({
   components: { CircleIcon },
   props: {
@@ -29,7 +29,7 @@ export default defineComponent({
       required: true
     }
   },
-  setup(_, context: SetupContext) {
+  setup() {
     const state = reactive({
       profileIcon: require('@/assets/icons/profileIcon.webp')
     })

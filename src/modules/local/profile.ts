@@ -7,6 +7,7 @@ export default ({ root }: SetupContext) => {
     profile: {} as Profile,
     careers: [] as Carrer[],
     skills: [] as Skill[],
+    skill: {} as Skill,
     sns: [] as Sns[],
     loading: false
   })
@@ -27,9 +28,17 @@ export default ({ root }: SetupContext) => {
         state.loading = false
       })
   }
+  function setSkill(pos: number) {
+    state.skill = state.skills[pos]
+  }
+  function navigateToSns(pos: number) {
+    window.open(state.sns[pos].link, '_blank')
+  }
 
   return {
     ...toRefs(state),
-    get
+    get,
+    setSkill,
+    navigateToSns
   }
 }

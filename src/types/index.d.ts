@@ -1,6 +1,6 @@
 export type Carrer = { title: string; content: string }
-export type Skill = { name: string; image: string; content: string }
-export type Sns = { name: string; image: string; link: string }
+export type Skill = { id: number; name: string; image: string; content: string }
+export type Sns = { id: number; name: string; image: string; link: string }
 
 export type Profile = {
   name: string
