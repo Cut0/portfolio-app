@@ -9,30 +9,30 @@
             v-icon  $zero
             v-list-item-title.title 's Portfolio
         v-divider
-        v-list-item-group
-          v-list-item(@click="navigateTo('/')")
+        v-list-item-group(aria-label="ページ遷移用")
+          v-list-item(@click="navigateTo('/')" role="option")
             v-list-item-icon
               v-icon  $profile
             v-list-item-content
               v-list-item-title Profile
-          v-list-item(@click="navigateTo('/productions')")
+          v-list-item(@click="navigateTo('/productions')" role="option")
             v-list-item-icon
               v-icon  $production
             v-list-item-content
               v-list-item-title Productions
-          v-list-item(@click="navigateTo('/articles')")
+          v-list-item(@click="navigateTo('/articles')" role="option")
             v-list-item-icon
               v-icon  $article
             v-list-item-content
               v-list-item-title Article
-          v-list-item(@click="navigateTo('/memos')")
+          v-list-item(@click="navigateTo('/memos')" role="option")
             v-list-item-icon
               v-icon  $memo
             v-list-item-content
               v-list-item-title Memos
     v-app-bar(color="#49337D" app fixed collapse-on-scroll)
       template(v-if="$route.name!=='検索'")
-        v-app-bar-nav-icon
+        v-app-bar-nav-icon(aria-label="ページアイコン")
           v-icon(v-if="$route.name==='Profile'") $profile
           v-icon(v-if="$route.name==='Productions'") $production
           v-icon(v-if="$route.name==='Articles'") $article
@@ -45,13 +45,13 @@
     v-bottom-navigation(
       v-if="$vuetify.breakpoint.xs"
       background-color="#49337D" app fixed grow)
-      v-btn(to="/")
+      v-btn(to="/" aria-label="プロフィールページ")
         v-icon $profile
-      v-btn(to="/productions")
+      v-btn(to="/productions" aria-label="プロダクションページ")
         v-icon $production
-      v-btn(to="/articles")
+      v-btn(to="/articles" aria-label="アーティクルページ")
         v-icon $article
-      v-btn(to="/memos")
+      v-btn(to="/memos" aria-label="メモページ")
         v-icon $memo
 </template>
 <script lang="ts">
