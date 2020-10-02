@@ -10,12 +10,12 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   { path: '/', name: 'Profile', component: Profile },
   {
-    path: '/productions',
+    path: '/Productions',
     name: 'Productions',
     component: Productions
   },
-  { path: '/articles', name: 'Articles', component: Articles },
-  { path: '/memos', name: 'Memos', component: Memos }
+  { path: '/Articles', name: 'Articles', component: Articles },
+  { path: '/Memos', name: 'Memos', component: Memos }
 ]
 
 const router = new VueRouter({

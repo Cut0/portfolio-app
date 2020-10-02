@@ -15,17 +15,17 @@
               v-icon  $profile
             v-list-item-content
               v-list-item-title Profile
-          v-list-item(@click="navigateTo('/productions')" role="option")
+          v-list-item(@click="navigateTo('/Productions')" role="option")
             v-list-item-icon
               v-icon  $production
             v-list-item-content
               v-list-item-title Productions
-          v-list-item(@click="navigateTo('/articles')" role="option")
+          v-list-item(@click="navigateTo('/Articles')" role="option")
             v-list-item-icon
               v-icon  $article
             v-list-item-content
               v-list-item-title Article
-          v-list-item(@click="navigateTo('/memos')" role="option")
+          v-list-item(@click="navigateTo('/Memos')" role="option")
             v-list-item-icon
               v-icon  $memo
             v-list-item-content
@@ -47,11 +47,11 @@
       background-color="#49337D" app fixed grow)
       v-btn(to="/" aria-label="プロフィールページ")
         v-icon $profile
-      v-btn(to="/productions" aria-label="プロダクションページ")
+      v-btn(to="/Productions" aria-label="プロダクションページ")
         v-icon $production
-      v-btn(to="/articles" aria-label="アーティクルページ")
+      v-btn(to="/Articles" aria-label="アーティクルページ")
         v-icon $article
-      v-btn(to="/memos" aria-label="メモページ")
+      v-btn(to="/Memos" aria-label="メモページ")
         v-icon $memo
 </template>
 <script lang="ts">

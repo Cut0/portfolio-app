@@ -1,6 +1,6 @@
 export default {
   name: 'Cut 0',
-  image: require('@/assets/icons/profileIcon.webp'),
+  image: require('@/assets/icons/profileIcon.svg'),
   job: 'frontend engineer',
   introduction:
     '東京理科大学情報工学科2年生。\n2019年5月頃からweb開発系のインターンをしている。\n現在は業務でのRails+Vue.jsでの開発や趣味でTypeScriptを使っていろいろやってる。',

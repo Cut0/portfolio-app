@@ -71,7 +71,7 @@ ul {
     content: '';
     position: absolute;
     top: 0;
-    right: -3px;
+    right: -24px;
     bottom: 0;
     margin: auto 0;
     width: 4px;
