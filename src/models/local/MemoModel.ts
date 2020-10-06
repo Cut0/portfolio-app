@@ -1,16 +1,113 @@
-import Memos from '@/db/memos'
+import { firestore } from 'firebase'
+import 'firebase/firestore'
 export default class MemoModel {
-  /*
-  public async get(id: string | number) {
+  db: firestore.Firestore
+  constructor() {
+    this.db = firestore()
+  }
+
+  public async getAll() {
+    const memos: firestore.DocumentData = []
+    await this.db
+      .collection('memos')
+      .get()
+      .then(el => {
+        el.forEach(doc => {
+          const memo = doc.data()
+          memo.startTime = memo.startTime.toDate()
+          memo.endTime = memo.endTime.toDate()
+          memos.push(memo)
+        })
+      })
     return new Promise(resolve => {
-      const memo = Memos.find(el => el.id === id)
-      resolve({ data: memo })
+      resolve({ data: memos })
     })
   }
-  */
-  public async getAll() {
+  public async getNotStarted({
+    limit = 20,
+    offset = 0,
+    time = new Date()
+  }: {
+    limit: number
+    offset: number
+    time: Date
+  }) {
+    const memos: firestore.DocumentData = []
+    await this.db
+      .collection('memos')
+      .where('startTime', '>', time)
+      .startAt(offset)
+      .limit(limit)
+      .get()
+      .then(el => {
+        el.forEach(doc => {
+          const memo = doc.data()
+          memo.startTime = memo.startTime.toDate()
+          memo.endTime = memo.endTime.toDate()
+          memos.push(memo)
+        })
+      })
     return new Promise(resolve => {
-      resolve({ data: Memos })
+      resolve({ data: memos })
+    })
+  }
+
+  public async getInProgress({
+    limit = 20,
+    offset = 0,
+    time = new Date()
+  }: {
+    limit: number
+    offset: number
+    time: Date
+  }) {
+    const memos: firestore.DocumentData = []
+    await this.db
+      .collection('memos')
+      .where('startTime', '<=', time)
+      .where('endTime', '>=', time)
+      .startAt(offset)
+      .limit(limit)
+      .get()
+      .then(el => {
+        el.forEach(doc => {
+          const memo = doc.data()
+          memo.startTime = memo.startTime.toDate()
+          memo.endTime = memo.endTime.toDate()
+          memos.push(memo)
+        })
+      })
+    return new Promise(resolve => {
+      resolve({ data: memos })
+    })
+  }
+
+  public async getComplated({
+    limit = 20,
+    offset = 0,
+    time = new Date()
+  }: {
+    limit: number
+    offset: number
+    time: Date
+  }) {
+    const memos: firestore.DocumentData = []
+    await this.db
+      .collection('memos')
+      .where('endTime', '<', time)
+      .startAt(offset)
+      .limit(limit)
+      .get()
+      .then(el => {
+        el.forEach(doc => {
+          const memo = doc.data()
+          memo.startTime = memo.startTime.toDate()
+          memo.endTime = memo.endTime.toDate()
+          memos.push(memo)
+        })
+      })
+    return new Promise(resolve => {
+      memos.startTIme = resolve({ data: memos })
     })
   }
 }

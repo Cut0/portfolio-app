@@ -4,31 +4,74 @@ import MemoModel from '@/models/local/MemoModel'
 
 export default ({ root }: SetupContext) => {
   const state = reactive({
-    memo: {} as Memo,
-    memos: [] as Memo[],
+    memosNotStarted: [] as Memo[],
+    memosInProgress: [] as Memo[],
+    memosComplated: [] as Memo[],
     loading: false
   })
-  /*
-  async function get(id: string | number) {
-    if (state.loading) return
-    state.loading = true
-    return new MemoModel()
-      .get(id)
-      .then((res: any) => {
-        state.memo = res.data
-      })
-      .finally(() => {
-        state.loading = false
-      })
-  }
-  */
   async function getAll() {
     if (state.loading) return
     state.loading = true
     return new MemoModel()
       .getAll()
       .then((res: any) => {
-        state.memos = res.data
+        res.data.map((el: any) => {
+          const now = new Date().getTime()
+          if (el.startTime > now) state.memosNotStarted.push(el)
+          else if (el.endTime < now) state.memosComplated.push(el)
+          else state.memosInProgress.push(el)
+        })
+      })
+      .finally(() => {
+        state.loading = false
+      })
+  }
+
+  async function getNotStarted(params: {
+    limit: number
+    offset: number
+    time: Date
+  }) {
+    if (state.loading) return
+    state.loading = true
+    return new MemoModel()
+      .getNotStarted(params)
+      .then((res: any) => {
+        state.memosNotStarted = res.data
+      })
+      .finally(() => {
+        state.loading = false
+      })
+  }
+
+  async function getInProgress(params: {
+    limit: number
+    offset: number
+    time: Date
+  }) {
+    if (state.loading) return
+    state.loading = true
+    return new MemoModel()
+      .getInProgress(params)
+      .then((res: any) => {
+        state.memosInProgress = res.data
+      })
+      .finally(() => {
+        state.loading = false
+      })
+  }
+
+  async function getComplated(params: {
+    limit: number
+    offset: number
+    time: Date
+  }) {
+    if (state.loading) return
+    state.loading = true
+    return new MemoModel()
+      .getComplated(params)
+      .then((res: any) => {
+        state.memosComplated = res.data
       })
       .finally(() => {
         state.loading = false
@@ -38,6 +81,9 @@ export default ({ root }: SetupContext) => {
   return {
     ...toRefs(state),
     // get,
-    getAll
+    getAll,
+    getNotStarted,
+    getInProgress,
+    getComplated
   }
 }

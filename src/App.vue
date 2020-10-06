@@ -15,11 +15,11 @@
               v-icon  $profile
             v-list-item-content
               v-list-item-title Profile
-          v-list-item(@click="navigateTo('/Productions')" role="option")
+          v-list-item(@click="navigateTo('/Products')" role="option")
             v-list-item-icon
-              v-icon  $production
+              v-icon  $product
             v-list-item-content
-              v-list-item-title Productions
+              v-list-item-title Producs
           v-list-item(@click="navigateTo('/Articles')" role="option")
             v-list-item-icon
               v-icon  $article
@@ -34,7 +34,7 @@
       template(v-if="$route.name!=='検索'")
         v-app-bar-nav-icon(aria-label="ページアイコン")
           v-icon(v-if="$route.name==='Profile'") $profile
-          v-icon(v-if="$route.name==='Productions'") $production
+          v-icon(v-if="$route.name==='Products'") $product
           v-icon(v-if="$route.name==='Articles'") $article
           v-icon(v-if="$route.name==='Memos'") $memo
         v-toolbar-title {{this.$route.name}}
@@ -47,8 +47,8 @@
       background-color="#49337D" app fixed grow)
       v-btn(to="/" aria-label="プロフィールページ")
         v-icon $profile
-      v-btn(to="/Productions" aria-label="プロダクションページ")
-        v-icon $production
+      v-btn(to="/Products" aria-label="プロダクションページ")
+        v-icon $product
       v-btn(to="/Articles" aria-label="アーティクルページ")
         v-icon $article
       v-btn(to="/Memos" aria-label="メモページ")

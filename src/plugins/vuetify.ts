@@ -14,7 +14,7 @@ export default new Vuetify({
     iconfont: 'mdiSvg',
     values: {
       profile: mdiAccount,
-      production: mdiApplicationExport,
+      product: mdiApplicationExport,
       article: mdiNewspaper,
       memo: mdiStickerOutline,
       zero: mdiHomeFloor0

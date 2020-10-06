@@ -1,5 +1,4 @@
-import Articles from '@/db/articles'
-export default class ProductionModel {
+export default class ArticleModel {
   /*
   public async get(id: string | number) {
     return new Promise(resolve => {
@@ -9,6 +8,7 @@ export default class ProductionModel {
   }
   */
   public async getAll() {
+    const Articles = await import('@/db/articles')
     return new Promise(resolve => {
       resolve({ data: Articles })
     })

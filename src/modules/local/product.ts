@@ -1,21 +1,21 @@
 import { SetupContext, reactive, toRefs } from '@vue/composition-api'
-import { Production } from '@/types'
-import ProductionModel from '@/models/local/ProductionModel'
+import { Product } from '@/types'
+import ProductModel from '@/models/local/ProductModel'
 
 export default ({ root }: SetupContext) => {
   const state = reactive({
-    production: {} as Production,
-    productions: [] as Production[],
+    product: {} as Product,
+    products: [] as Product[],
     loading: false
   })
 
   async function get(id: string | number) {
     if (state.loading) return
     state.loading = true
-    return new ProductionModel()
+    return new ProductModel()
       .get(id)
       .then((res: any) => {
-        state.production = res.data
+        state.product = res.data
       })
       .finally(() => {
         state.loading = false
@@ -25,10 +25,10 @@ export default ({ root }: SetupContext) => {
   async function getAll() {
     if (state.loading) return
     state.loading = true
-    return new ProductionModel()
+    return new ProductModel()
       .getAll()
       .then((res: any) => {
-        state.productions = res.data
+        state.products = res.data
       })
       .finally(() => {
         state.loading = false

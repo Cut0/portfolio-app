@@ -12,6 +12,8 @@
     "@vue/composition-api": "^1.0.0-beta.14",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.22.1",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-carousel-3d": "^1.0.1",

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify'
 import router from './router'
+import vuetify from './plugins/vuetify'
 import './plugins/composition-api'
+import './plugins/firebase'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false

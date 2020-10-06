@@ -12,7 +12,7 @@ export type Profile = {
   sns: Sns[]
 }
 
-export type Production = {
+export type Product = {
   name: string
   image: string
   link: string
@@ -20,4 +20,9 @@ export type Production = {
 
 export type Article = {}
 
-export type Memo = {}
+export type Memo = {
+  title: string
+  content: string
+  startTime: Date
+  endTime: Date
+}

@@ -4,8 +4,8 @@ import ArticleModel from '@/models/local/ArticleModel'
 
 export default ({ root }: SetupContext) => {
   const state = reactive({
-    production: {} as Article,
-    productions: [] as Article[],
+    article: {} as Article,
+    articles: [] as Article[],
     loading: false
   })
   /*
@@ -28,7 +28,7 @@ export default ({ root }: SetupContext) => {
     return new ArticleModel()
       .getAll()
       .then((res: any) => {
-        state.productions = res.data
+        state.articles = res.data
       })
       .finally(() => {
         state.loading = false
