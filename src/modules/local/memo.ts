@@ -24,6 +24,7 @@ export default ({ root }: SetupContext) => {
       })
       .finally(() => {
         state.loading = false
+        console.log(state.memosComplated)
       })
   }
 

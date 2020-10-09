@@ -1,4 +1,6 @@
 import * as firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/analytics'
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_AFIREBASE_API_KEY,
   authDomain: process.env.VUE_APP_AFIREBASE_AUTH_DOMAIN,
@@ -11,4 +13,3 @@ const firebaseConfig = {
 }
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
-firebase.analytics()

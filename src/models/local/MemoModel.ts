@@ -1,13 +1,14 @@
-import { firestore } from 'firebase'
+import * as firebase from 'firebase/app'
 import 'firebase/firestore'
+
 export default class MemoModel {
-  db: firestore.Firestore
+  db: firebase.firestore.Firestore
   constructor() {
-    this.db = firestore()
+    this.db = firebase.firestore()
   }
 
   public async getAll() {
-    const memos: firestore.DocumentData = []
+    const memos: firebase.firestore.DocumentData = []
     await this.db
       .collection('memos')
       .get()
@@ -32,7 +33,7 @@ export default class MemoModel {
     offset: number
     time: Date
   }) {
-    const memos: firestore.DocumentData = []
+    const memos: firebase.firestore.DocumentData = []
     await this.db
       .collection('memos')
       .where('startTime', '>', time)
@@ -61,7 +62,7 @@ export default class MemoModel {
     offset: number
     time: Date
   }) {
-    const memos: firestore.DocumentData = []
+    const memos: firebase.firestore.DocumentData = []
     await this.db
       .collection('memos')
       .where('startTime', '<=', time)
@@ -91,7 +92,7 @@ export default class MemoModel {
     offset: number
     time: Date
   }) {
-    const memos: firestore.DocumentData = []
+    const memos: firebase.firestore.DocumentData = []
     await this.db
       .collection('memos')
       .where('endTime', '<', time)

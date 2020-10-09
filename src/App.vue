@@ -39,6 +39,16 @@
           v-icon(v-if="$route.name==='Memos'") $memo
         v-toolbar-title {{this.$route.name}}
         v-spacer
+      template(
+        v-if="($route.name==='Memos')"
+        v-slot:extension)
+        v-tabs(
+          color="white"
+          v-model="state.tabs.timerTab"
+          fixed-tabs centered)
+          v-tab(key="0") Not Started
+          v-tab(key="1") In Progress
+          v-tab(key="2") Complated
     v-main
       v-container(color="#49337D")
         router-view

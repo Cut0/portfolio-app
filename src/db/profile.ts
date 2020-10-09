@@ -1,5 +1,5 @@
 export default {
-  name: 'Cut 0',
+  name: 'Cut Ray',
   image: require('@/assets/icons/profileIcon.svg'),
   job: 'frontend engineer',
   introduction:
