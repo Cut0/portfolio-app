@@ -22,7 +22,7 @@
   span.content(v-else) No Data
 </template>
 <script lang="ts">
-import { reactive, SetupContext, defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   props: { items: { type: Array } }
 })

@@ -83,4 +83,6 @@ export default defineComponent({
   background: #2c2738 !important
 .v-window
   border-radius: 19px !important
+.v-window-item
+  background-color: #2C2738
 </style>
