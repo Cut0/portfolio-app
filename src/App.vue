@@ -44,14 +44,14 @@
         v-slot:extension)
         v-tabs(
           color="white"
-          v-model="state.tabs.timerTab"
+          v-model="state.tabs.memo"
           fixed-tabs centered)
-          v-tab(key="0") Not Started
-          v-tab(key="1") In Progress
+          v-tab(key="0") Yet
+          v-tab(key="1") Now
           v-tab(key="2") Complated
     v-main
       v-container(color="#49337D")
-        router-view
+        router-view(:tabs="state.tabs")
     v-bottom-navigation(
       v-if="$vuetify.breakpoint.xs"
       background-color="#49337D" app fixed grow)
@@ -68,7 +68,7 @@
 import { reactive, SetupContext, defineComponent } from '@vue/composition-api'
 export default defineComponent({
   setup(_, context: SetupContext) {
-    const state = reactive({ tabs: { rankingTab: {}, timerTab: {} } })
+    const state = reactive({ tabs: { memo: null } })
     return {
       state,
       navigateTo(path: string) {
@@ -81,4 +81,6 @@ export default defineComponent({
 <style lang="sass">
 .v-application
   background: #2c2738 !important
+.v-window
+  border-radius: 19px !important
 </style>

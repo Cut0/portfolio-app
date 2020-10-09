@@ -24,7 +24,7 @@ export default class MemoModel {
       resolve({ data: memos })
     })
   }
-  public async getNotStarted({
+  public async getYet({
     limit = 20,
     offset = 0,
     time = new Date()
@@ -53,7 +53,7 @@ export default class MemoModel {
     })
   }
 
-  public async getInProgress({
+  public async getNow({
     limit = 20,
     offset = 0,
     time = new Date()

@@ -1,12 +1,15 @@
 import { SetupContext, reactive, toRefs } from '@vue/composition-api'
 import { Memo } from '@/types'
 import MemoModel from '@/models/local/MemoModel'
+import dayjs from 'dayjs'
 
 export default ({ root }: SetupContext) => {
   const state = reactive({
-    memosNotStarted: [] as Memo[],
-    memosInProgress: [] as Memo[],
-    memosComplated: [] as Memo[],
+    memos: { Yet: [], Now: [], Complated: [] } as {
+      Yet: Memo[]
+      Now: Memo[]
+      Complated: Memo[]
+    },
     loading: false
   })
   async function getAll() {
@@ -16,46 +19,49 @@ export default ({ root }: SetupContext) => {
       .getAll()
       .then((res: any) => {
         res.data.map((el: any) => {
+          const memo = {
+            title: el.title,
+            content: el.content,
+            startTime: dayjs(el.startTime).format('YYYY/M/D HH:mm'),
+            endTime: dayjs(el.endTime).format('YYYY/M/D HH:mm')
+          }
           const now = new Date().getTime()
-          if (el.startTime > now) state.memosNotStarted.push(el)
-          else if (el.endTime < now) state.memosComplated.push(el)
-          else state.memosInProgress.push(el)
+          if (el.startTime > now) state.memos.Yet.push(memo)
+          else if (el.endTime < now) state.memos.Complated.push(memo)
+          else state.memos.Now.push(memo)
         })
       })
       .finally(() => {
         state.loading = false
-        console.log(state.memosComplated)
       })
   }
 
-  async function getNotStarted(params: {
-    limit: number
-    offset: number
-    time: Date
-  }) {
+  async function getYet(params: { limit: number; offset: number; time: Date }) {
     if (state.loading) return
     state.loading = true
     return new MemoModel()
-      .getNotStarted(params)
+      .getYet(params)
       .then((res: any) => {
-        state.memosNotStarted = res.data
+        state.memos.Yet = res.data.map((el: any) => {
+          el.startTime = dayjs(el.startTime).format('YYYY/M/D HH:mm')
+          el.endTime = dayjs(el.endTime).format('YYYY/M/D HH:mm')
+        })
       })
       .finally(() => {
         state.loading = false
       })
   }
 
-  async function getInProgress(params: {
-    limit: number
-    offset: number
-    time: Date
-  }) {
+  async function getNow(params: { limit: number; offset: number; time: Date }) {
     if (state.loading) return
     state.loading = true
     return new MemoModel()
-      .getInProgress(params)
+      .getNow(params)
       .then((res: any) => {
-        state.memosInProgress = res.data
+        state.memos.Now = res.data.map((el: any) => {
+          el.startTime = dayjs(el.startTime).format('YYYY/M/D HH:mm')
+          el.endTime = dayjs(el.endTime).format('YYYY/M/D HH:mm')
+        })
       })
       .finally(() => {
         state.loading = false
@@ -72,7 +78,10 @@ export default ({ root }: SetupContext) => {
     return new MemoModel()
       .getComplated(params)
       .then((res: any) => {
-        state.memosComplated = res.data
+        state.memos.Complated = res.data.map((el: any) => {
+          el.startTime = dayjs(el.startTime).format('YYYY/M/D HH:mm')
+          el.endTime = dayjs(el.endTime).format('YYYY/M/D HH:mm')
+        })
       })
       .finally(() => {
         state.loading = false
@@ -83,8 +92,8 @@ export default ({ root }: SetupContext) => {
     ...toRefs(state),
     // get,
     getAll,
-    getNotStarted,
-    getInProgress,
+    getYet,
+    getNow,
     getComplated
   }
 }

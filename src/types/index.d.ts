@@ -23,6 +23,6 @@ export type Article = {}
 export type Memo = {
   title: string
   content: string
-  startTime: Date
-  endTime: Date
+  startTime: string
+  endTime: string
 }
