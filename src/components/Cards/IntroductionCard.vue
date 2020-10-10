@@ -23,7 +23,7 @@ export default defineComponent({
 }
 .title {
   @include title;
-  margin: 16px 64px 16px 24px;
+  margin: 8px 64px 8px 24px;
   min-width: 136px;
   position: relative;
 }
