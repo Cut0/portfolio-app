@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Profile from '@/views/Profile.vue'
-import Products from '@/views/Producs.vue'
+import Products from '@/views/Products.vue'
 import Articles from '@/views/Articles.vue'
 import Memos from '@/views/Memo.vue'
 

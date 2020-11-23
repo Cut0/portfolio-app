@@ -19,7 +19,7 @@
             v-list-item-icon
               v-icon  $product
             v-list-item-content
-              v-list-item-title Producs
+              v-list-item-title Products
           v-list-item(@click="navigateTo('/Articles')" role="option")
             v-list-item-icon
               v-icon  $article
