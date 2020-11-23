@@ -1,17 +1,27 @@
 <template lang="pug">
   div
-    product-card.card(
-      :productIcon="require('@/assets/icons/profileIcon.svg')"
-      title="Career"
-      content="ハッカソンで作成したテレワーク中の休憩促進アプリです。"
-    )
+    template(v-for="el in products")
+      product-card.card(
+        :productIcon="el.image"
+        :title="el.name"
+        :content="el.content"
+        :url="el.link"
+      )
 </template>
 <script>
 import { defineComponent } from '@vue/composition-api'
 import ComingSoonCard from '@/components/cards/ComingSoonCard.vue'
 import ProductCard from '@/components/cards/ProductCard.vue'
+import ProductComponent from '@/modules/local/product'
 export default defineComponent({
-  components: { ComingSoonCard, ProductCard }
+  components: { ComingSoonCard, ProductCard },
+  setup(_, ctx) {
+    const productComponent = ProductComponent(ctx)
+    productComponent.getAll()
+    return {
+      ...productComponent
+    }
+  }
 })
 </script>
 <style scoped>
